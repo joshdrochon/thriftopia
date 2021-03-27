@@ -1,0 +1,13 @@
+.sub-division input[name="password"] {
+    margin-bottom: 10px;
+}
+
+input[name="birthday"] {
+    width: 400px;
+    height: 38px;
+    margin: 0 0 5px 0;
+}
+
+#login, #register {
+    margin: 5px 0px;
+}

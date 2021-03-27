@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link 
+    rel="stylesheet" 
+    href="{% static 'css/style.css' %}"
+>
+<script 
+    src="{% static 'js/script.js' %}"
+>
+</script>
+
+
+<div class="sub-division">
+    <h2 class="brand-white">Register</h2>
+    <form action="/register" method="post">
+        {% csrf_token %}
+        {{ RegistrationForm }}
+        <input id="register" type="submit" value="Register">
+    </form>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <P class="brand-white">Already have an account? <a href="/" class="bold">Login</a></P>
+</div>
+{% endblock %}

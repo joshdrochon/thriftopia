@@ -1,0 +1,69 @@
+body {
+    background-color: #1D4F91;
+}
+    .main {
+        height: 100vh;
+        position: relative;
+        padding: 20px;
+    }
+        .user-dashboard {
+
+        }
+            .user-dashboard p {
+                color: white;
+                display: inline-block;
+            }
+            .user-dashboard .logout-btn {
+                color: dodgerblue;
+                transition: color 200ms;
+                float: right;
+            }
+            .user-dashboard .logout-btn:hover {
+                color: white;
+                text-decoration: none;
+            }
+
+        .sub-division {
+            width: 400px;
+            position: absolute;
+            top: 350px;
+            left: calc(50% - 200px);
+            transform: translateY(-50%);
+        }
+
+a {
+    color:dodgerblue;
+}
+a:hover{
+    color:dodgerblue;
+}
+
+.text-style-p {
+    font-size: 12px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+label {
+    color: white;
+}
+
+.brand-white {
+    color: white;
+}
+
+.error {
+    color: #ff8240;
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    list-style-type: none;
+    display: inline-block;
+    vertical-align: top;
+}

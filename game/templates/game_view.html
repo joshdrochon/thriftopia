@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link 
+    rel="stylesheet" 
+    href="{% static 'css/game.css' %}"
+>
+<script
+    defer
+    src="{% static 'js/game.js' %}"
+>
+</script>
+
+<div class="player-dashboard uniform-container">
+    <ul>
+        <li><p>Wealth</p>${{player.wealth}}</li>
+        <li><p>Morale</p>{{player.morale}}</li>
+        <li><p>Energy</p>{{player.energy}}</li>
+        <li><p id="item-inventory">Inventory</p>{{request.session.activities | length}} Items</li>
+    </ul>
+</div>
+<div class="xp-container uniform-container">
+    <div>
+        <p class="p_class_name"><strong>{{p_class.name}}</strong></p>
+        <p class="p_class_char"><strong>{{p_class.character}}</strong></p>
+    </div>
+    <p style="margin-top:20px;">Level: {{player.level}}</p>
+    <div class="progress">
+            <span id="xp-label">XP</span>
+            <div 
+                class="progress-bar" 
+                role="progressbar" 
+                aria-valuenow="0" 
+                aria-valuemin="0" 
+                aria-valuemax="100"
+                >
+            </div>
+        </div>
+    </div>
+<div class="destinations uniform-container">
+    <p style="margin: 0 0 0 5px;"><strong>Destinations</strong></p>
+    <ul>
+        {% for destination in destinations %}
+        <li>
+            <form action="{% url 'proc_destination' destination %}" method="post">
+                {% csrf_token %}
+                <button onclick="handleXP()" class="btn btn-primary activity-btn">
+                {{destination}}
+                </button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="activity uniform-container"></div>
+
+
+
+{% endblock %}

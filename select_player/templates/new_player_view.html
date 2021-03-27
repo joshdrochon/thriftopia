@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link 
+    rel="stylesheet" 
+    href="{% static 'css/select_player.css' %}"
+>
+<script
+    defer 
+    src="{% static 'js/select_player.js' %}"
+>
+</script>
+
+{% load select_player_extras %}
+
+<div class="player-container">
+    <h2 class="brand-white">Select Class</h2>
+    <ul>
+        {% for player_class in player_classes %}
+        <li>
+            <form class="class" action="/assign_player/{{player_class.id}}" method="post">
+                {% csrf_token %}
+            <div class="card" style="width: 18rem; height: 400px;">
+                <img
+                  class="card-img-top" 
+                  src="{% static player_class.img_path %}" 
+                  alt="Card image cap"
+                >
+                <div class="card-body">
+                  <h5 class="card-title">{{player_class.name}}</h5>
+                  <p class="card-text">{{player_class.desc}}</p>
+                  <button 
+                    type="button"
+                    class="btn btn-primary" 
+                    data-toggle="modal" 
+                    data-target="#skillsModal"
+                    onclick="getSkills('{{ player_class.name }}', '{{ player_class.character }}', '{{ player_class.intelligence }}', '{{ player_class.luck }}', '{{ player_class.cunning }}', '{{ player_class.img_path }}')">
+                    Skills
+                </button>
+                <input 
+                    class="btn btn-primary" 
+                    type="submit" 
+                    value="Choose"
+                >
+                </div>
+              </div>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+<div class="modal fade" id="skillsModal" tabindex="-1" role="dialog" aria-labelledby="skillsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="skillsModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <ul id="skills-list"></ul>
+            <div id="img-crop">
+              <img
+                id="character-pic"
+                class="card-img-top" 
+                alt="profile pic"
+            >
+            </div>
+            <h3 id="character-name"></h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

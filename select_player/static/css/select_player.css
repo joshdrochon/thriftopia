@@ -1,0 +1,41 @@
+ul li {
+    display: inline-block;
+}
+    .player-container {
+        text-align: center;
+        margin-top: 100px;
+    }
+        form.class {
+            margin: 10px;
+        }
+            .card-text {
+                text-align: justify;
+                font-size: 14px;
+            }
+            ul#skills-list {
+                display: inline-block;
+                vertical-align: top;
+            }
+                #skills-list li {
+                    display: block;
+                }
+                    #skills-list .skill {
+                        text-transform: uppercase;
+                    }
+
+                    div#img-crop {
+                        width: 300px;
+                        float: right;
+                        overflow: hidden;
+                    }
+
+                        #character-pic {
+                            margin: -10px 0px 0px 95px;
+                        }
+
+                        #character-name {
+                            margin: 58px 0px 0px 0px;
+                            white-space: nowrap;
+                        }
+
+        

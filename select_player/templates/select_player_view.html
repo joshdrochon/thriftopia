@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<link 
+    rel="stylesheet" 
+    href="{% static 'css/select_player.css' %}"
+>
+<script
+    defer 
+    src="{% static 'js/select_player.js' %}"
+>
+</script>
+
+<div class="player-container">
+    <h2 class="brand-white">Select Player</h2>
+    <ul>
+        {% for player in user_players %}
+        <li>
+            <form class="class" action="/select_player/{{player.id}}" method="post">
+                {% csrf_token %}
+                <div class="card" style="width: 18rem; height: 400px;">
+                    {% if player.p_class_id == 1 %}
+                        <img class="card-img-top" src="{% static 'img/Rich_Greene.png' %}">
+                    {% elif player.p_class_id == 2 %}
+                        <img class="card-img-top" src="{% static 'img/Cindy_Bosman.png' %}">
+                    {% else %}
+                        <img class="card-img-top" src="{% static 'img/Somebody.png' %}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {% if player.p_class_id == 1 %}
+                                Hustler
+                            {% elif player.p_class_id == 2 %}
+                                Entrepreneur
+                            {% else %}
+                                Somebody
+                            {% endif %}
+                        </h5>
+                        <p class="card-text" style="text-align:center">Wealth: ${{player.wealth}} <strong>|</strong> Level: {{player.level}} <strong>|</strong> XP: {{player.experience}}</p>
+                        <input 
+                            class="btn btn-primary" 
+                            type="submit" 
+                            value="Select"
+                        >
+                    </div>
+                </div>
+            </form>
+        </li>
+        {% endfor %}
+        
+        {% for card in new_player_cards %}
+        <li>
+            <form class="class" action="/newplayer" method="post">
+                {% csrf_token %}
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" style="max-width:286px" src="{% static 'img/New_Player.png' %}" alt="Card image cap">
+                <div class="card-body" style="padding-bottom: 91px">
+                    <h5 class="card-title" style="margin-bottom: 46px">New Player</h5>
+                    <input 
+                    class="btn btn-primary" 
+                    type="submit" 
+                    value="New Player">
+                </div>
+            </div>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

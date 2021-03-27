@@ -1,0 +1,66 @@
+body {
+    background: url('../img/thriftopia_background.png');
+}
+
+.uniform-container {
+    background-color: white;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.player-dashboard {
+    display: inline-block;
+    vertical-align: top;
+    width: 70%;
+    height: 100px;
+}
+
+    .player-dashboard ul li {
+        display: inline-block;
+        width: 24%;
+    }
+    .player-dashboard ul li p {
+        margin: 0px;
+    }
+
+.xp-container {
+    float: right;
+    margin-left: 20px;
+    width: calc(30% - 20px);
+    height: 100px;
+}
+    .xp-container p {
+        display: inline-block;
+        margin: 0px;
+    }
+        #xp-label {
+            background-color: transparent;
+            position: absolute;
+            margin-left: 5px;
+            color: white;
+            -webkit-text-stroke-width: .5px;
+            -webkit-text-stroke-color: black;
+        }
+
+        .p_class_char {
+            float: right;
+        }
+
+div.destinations {
+    margin-top: 20px;
+}
+    .activity-btn {
+        width: 72px;
+        height: 72px;
+        margin: 5px;
+        font-size: 12px;
+    }
+
+div.activity {
+    height: 290px;
+    overflow: scroll;
+    margin-top: 20px;
+}
+
+
+
